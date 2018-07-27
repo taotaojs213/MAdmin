@@ -21,6 +21,12 @@
     <link type="text/css" rel="stylesheet" href="vendors/calendar/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/sco.message/sco.message.css">
     <link type="text/css" rel="stylesheet" href="vendors/intro.js/introjs.css">
+    <!-- 表格样式 -->
+    <link type="text/css" rel="stylesheet" href="vendors/DataTables/media/css/jquery.dataTables.css">
+    <link type="text/css" rel="stylesheet" href="vendors/DataTables/media/css/dataTables.bootstrap.css">
+    <!-- 侧边提示消息 -->
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-notific8/jquery.notific8.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/sco.message/sco.message.css">
     <!--Loading style vendors-->
     <link type="text/css" rel="stylesheet" href="vendors/animate.css/animate.css">
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
@@ -144,6 +150,18 @@ Chat
     <script src="vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
+    <!-- 表格样式 -->
+    <script src="vendors/DataTables/media/js/jquery.dataTables.js"></script>
+    <script src="vendors/DataTables/media/js/dataTables.bootstrap.js"></script>
+    <script src="vendors/DataTables/jquery.jeditable.js"></script>
+    <script src="js/table-editable.js"></script>
+    <!-- 弹出框 -->
+    <script src="vendors/bootbox.min.js"></script>
+    <!-- 侧边提示消息 -->
+    <script src="vendors/jquery-notific8/jquery.notific8.min.js"></script>
+    <script src="vendors/sco.message/sco.message.js"></script>
+    <script src="vendors/jquery-notific8/notific8.js"></script>
+    <script src="js/ui-notific8.js"></script>
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="vendors/intro.js/intro.js"></script>
     <script src="vendors/flot-chart/jquery.flot.js"></script>
@@ -158,6 +176,7 @@ Chat
     <script src="vendors/sco.message/sco.message.js"></script>
     <script src="vendors/intro.js/intro.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/allModel.js"></script>
     
 
     <script>
@@ -176,7 +195,7 @@ Chat
 
         $.ajax({
             type: "GET",
-            url: "html/main.html",
+            url: "html/data1.html",
             cache: false,
             async: false,
             success: function(data){

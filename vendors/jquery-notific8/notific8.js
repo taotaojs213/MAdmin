@@ -17,20 +17,20 @@ WS.jQuery.notific8 = {
             var settings = {
                     theme: $('select#notific8Theme').val(),
                     sticky: $('input#notific8Sticky').is(':checked'),
-                    horizontalEdge: $('select#notific8horizontal').val(),
-                    verticalEdge: $('select#notific8vertical').val()
+                    horizontalEdge: 'top',
+                    verticalEdge: 'right'
                 },
                 $button = $(this);
             
             if ($.trim($('input#notific8Heading').val()) != '') {
-                settings.heading = $.trim($('input#notific8Heading').val());
+                settings.heading = '';
             }
             
             if (!settings.sticky) {
-                settings.life = $('select#notific8Life').val();
+                settings.life = '';
             }
             
-            $.notific8($.trim($('input#notific8Text').val()), settings);
+            $.notific8($.trim(), settings);
             
             $button.attr('disabled', 'disabled');
             
@@ -41,6 +41,6 @@ WS.jQuery.notific8 = {
     }
 };
 
-$(function() {
+$(function(msg, , sticky, ) {
     WS.jQuery.notific8.init();
 });

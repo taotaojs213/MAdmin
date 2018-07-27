@@ -7666,6 +7666,7 @@ fieldset[disabled] .btn-white.active {
 }
 .modal .modal-dialog .modal-content .modal-header.modal-header-primary {
     background: #e74c3c;
+    z-index: 9999;
 }
 .modal .modal-dialog .modal-content .modal-header.modal-header-primary .modal-title {
     color: #FFFFFF;
