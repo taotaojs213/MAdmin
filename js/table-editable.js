@@ -73,7 +73,22 @@ $(function () {
         }
     });
     $('#example1').on('click', 'button.repassword', function (e) {
-        
+        bootbox.prompt({ 
+            size: "large",
+            title: "确定使用以下密码吗？", 
+            callback: function(result){ 
+                if(result != null){
+                    //TODO 
+                    console.log($('.modal-dialog input').val());
+                }
+            },
+            backdrop: true,
+        })
+        var pwdStr = '';
+        for(var i=0;i<8;i++){
+            pwdStr += Math.floor(Math.random()*10);
+        }
+        $('.modal-dialog input').val(pwdStr);
     });
     function rollbackRow(oTable, nRow) {
         var aData = oTable.fnGetData(nRow);

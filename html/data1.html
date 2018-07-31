@@ -44,8 +44,8 @@
                                         <td class="center"> 未完成</td>
                                         <td>
                                             <button type="button" class="btn btn-danger btn-xs mbs edit"><i class="fa fa-trash-o"></i> 修改</button>
-                                            <button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-danger btn-xs mbs delete"><i class="fa fa-trash-o"></i> 删除</button>
-                                            <button type="button" data-target="#modal-prompt" data-toggle="modal" class="btn btn-danger btn-xs mbs repassword"><i class="fa fa-trash-o"></i> 重置密码</button>
+                                            <button type="button" class="btn btn-danger btn-xs mbs delete"><i class="fa fa-trash-o"></i> 删除</button>
+                                            <button type="button" class="btn btn-danger btn-xs mbs repassword"><i class="fa fa-trash-o"></i> 重置密码</button>
                                         </td>
                                     </tr>
                                     <tr class="even gradeC">
@@ -91,37 +91,5 @@
         </div>
     </div>
     <!--END CONTENT-->
-    <div id="modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header modal-header-primary">
-                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                    <h4 id="modal-header-primary-label" class="modal-title">提示</h4>
-                </div>
-                <div class="modal-body">确定删除这条记录？</div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-default">取消</button>
-                    <button type="button" class="btn btn-primary" >确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="modal-prompt" tabindex="-1" role="dialog" aria-labelledby="modal-prompt-label" aria-hidden="true" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                    <h4 id="modal-prompt-label" class="modal-title">确定以下列数字为密码</h4>
-                </div>
-                <div class="modal-body">
-                    <input id="fullname" type="text" class="form-control" />
-                </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-                    <button id="notific8Test" data-dismiss="modal" type="button" class="btn btn-primary">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
-<input id="notific8-info" type="hidden" value="{msg:'111111'}"/>
