@@ -73,7 +73,7 @@ $(function () {
         }
     });
     $('#example1').on('click', 'button.repassword', function (e) {
-        alert("Hello world!");
+        
     });
     function rollbackRow(oTable, nRow) {
         var aData = oTable.fnGetData(nRow);

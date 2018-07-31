@@ -7659,6 +7659,9 @@ fieldset[disabled] .btn-white.active {
 .ui-spinner-input {
     height: 24px;
 }
+.modal{
+    z-index: 99999;
+}
 .modal .modal-dialog .modal-content {
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;

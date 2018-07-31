@@ -13,10 +13,11 @@ if (!WS.hasOwnProperty('jQuery')) {
 
 WS.jQuery.notific8 = {
     init: function() {
+        
         $('button#notific8Test').click(function(event) {
             var settings = {
-                    theme: $('select#notific8Theme').val(),
-                    sticky: $('input#notific8Sticky').is(':checked'),
+                    theme: 'teal',
+                    sticky: false,
                     horizontalEdge: 'top',
                     verticalEdge: 'right'
                 },
@@ -27,20 +28,21 @@ WS.jQuery.notific8 = {
             }
             
             if (!settings.sticky) {
-                settings.life = '';
+                settings.life = '10000';
             }
             
-            $.notific8($.trim(), settings);
+            $.notific8($.trim('测试'), settings);
             
             $button.attr('disabled', 'disabled');
             
             setTimeout(function() {
                 $button.removeAttr('disabled');
             }, 1000);
+            
         });
     }
 };
 
-$(function(msg, , sticky, ) {
+$(function() {
     WS.jQuery.notific8.init();
 });
