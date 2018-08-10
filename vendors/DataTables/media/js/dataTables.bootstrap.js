@@ -2,15 +2,15 @@
 var search_html;
 search_html = '<div class="input-group input-group-sm mbs">';
 search_html += "_INPUT_";
-search_html += '<span class="input-group-btn"><button type="button" data-toggle="dropdown" class="btn btn-success dropdown-toggle">Search</button></span></div>';
+search_html += '<span class="input-group-btn"><button type="button" data-toggle="dropdown" class="btn btn-success dropdown-toggle">搜素</button></span></div>';
 $.extend( true, $.fn.dataTable.defaults, {
 	"sDom":
 		"<'row'<'col-md-5'l><'col-md-4'T><'col-md-3'f>>"+
-		"t"+
-		"<'row'<'col-md-6'l><'col-md-6'p>r>",
+		"<'row'<'col-sm-12'tr>>" +
+		"<'row'<'col-md-6'i><'col-md-6'p>r>",
 	"oLanguage": {
-		"sLengthMenu": "View _MENU_ records | Found total 100 records",
-		"sSearch": search_html
+		"sLengthMenu": "显示 _MENU_ 条",
+		"sSearch": search_html,
 	}
 } );
 

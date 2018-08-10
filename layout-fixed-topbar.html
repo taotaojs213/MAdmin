@@ -177,43 +177,74 @@ Chat
     <script src="vendors/intro.js/intro.js"></script>
     <script src="js/index.js"></script>
     <script src="js/allModel.js"></script>
+    <script src="js/Myjs.js"></script>
     
 
-    <script>
-        
-        $.ajax({
-            type: "GET",
-            url: "html/menu.html",
-            cache: false,
-            async: false,
-            success: function(data){
-                $("#wrapper").prepend(data)
-            }
-        })
-            
-        
+<script>
+    $.ajax({
+        type: "GET",
+        url: "html/menu.html",
+        cache: false,
+        async: false,
+        success: function(data){
+            $("#wrapper").prepend(data)
+        }
+    })
 
-        $.ajax({
-            type: "GET",
-            url: "html/data1.html",
-            cache: false,
-            async: false,
-            success: function(data){
-                $("#wrapper").append(data);
-            }
-        })
-            
-        $.ajax({
-            type: "GET",
-            url: "html/header.html",
-            cache: false,
-            async: false,
-            success: function(data){
-                $("#header-topbar-option-demo").prepend(data);
-            }
-        })
+    $.ajax({
+        type: "GET",
+        url: "html/staffData.html",
+        cache: false,
+        async: false,
+        success: function(data){
+            $("#wrapper").append(data);
+            // $.ajax({
+            //     type: "GET",
+            //     url: "http://localhost:8090/staff/findByObjList",
+            //     cache: false,
+            //     async: true,
+            //     data: {
+            //         staffState:0,
+            //     },
+            //     success: function(obj){
+            //         console.log(obj);
+            //         var dom = '';
+            //         obj.object.forEach(function(e,index){
+            //             if(index % 2 == 1){
+            //                 dom += '<tr class="odd">';
+            //             }else{
+            //                 dom += '<tr class="even">';
+            //             }
+            //             dom += '<td>' + e.id + '</td>';
+            //             dom += '<td>' + e.staffName + '</td>';
+            //             dom += '<td>' + '已绑定' + '</td>';
+            //             dom += '<td class="center">' + '已完成' + '</td>';
+            //             dom += '<td>';
+            //             dom += '    <button type="button" class="btn btn-danger btn-xs mbs edit"><i class="fa fa-trash-o"></i> 修改</button>';
+            //             dom += '    <button type="button" class="btn btn-danger btn-xs mbs delete"><i class="fa fa-trash-o"></i> 删除</button>';
+            //             dom += '    <button type="button" class="btn btn-danger btn-xs mbs repassword"><i class="fa fa-trash-o"></i> 重置密码</button>';
+            //             dom += '</td>';
+            //             dom += '</tr>';
+            //         });
+            //         $('#example1>tbody').append(dom);
+            //     },
+            //     error: function(d,msg){
+            //         console.log(msg)
+            //     }
+            // });
+        }
+    })
         
-    </script>
+    $.ajax({
+        type: "GET",
+        url: "html/header.html",
+        cache: false,
+        async: false,
+        success: function(data){
+            $("#header-topbar-option-demo").prepend(data);
+        }
+    })
+</script>
 </body>
 
 </html>

@@ -1,0 +1,55 @@
+{
+    "total": 234,
+    "per_page": "25",
+    "current_page": 1,
+    "last_page": 10,
+    "next_page_url": "http://local.dgc_sdkops.com/monitor/log_pack/getRecodeList?page=2",
+    "prev_page_url": null,
+    "from": 1,
+    "to": 25,
+    "data": [
+     {
+      "id": 128,
+      "user_id": 1,
+      "task_id": "package_128_113",
+      "channel_version_id": 128,
+      "game_version_id": 113,
+      "extend_id": 0,
+      "type": "pack",
+      "status": 2,
+      "remark": "",
+      "cast_time": 93475,
+      "created_at": "1500365068",
+      "updated_at": "1500458543",
+      "user_name": "admin",
+      "format_created_at": "2017-07-18 16:04:28",
+      "format_updated_at": "2017-07-18 16:04:28",
+      "game": "x",
+      "channel": "y",
+      "game_id": 11290,
+      "channel_id": 67
+     },
+     {
+      "id": 240,
+      "user_id": 1,
+      "task_id": "package_128_113",
+      "channel_version_id": 128,
+      "game_version_id": 113,
+      "extend_id": 0,
+      "type": "pack",
+      "status": 0,
+      "remark": "",
+      "cast_time": 0,
+      "created_at": "1500458454",
+      "updated_at": "1500458454",
+      "user_name": "admin",
+      "format_created_at": "2017-07-19 18:00:54",
+      "format_updated_at": "2017-07-19 18:00:54",
+      "game": "x",
+      "channel": "y",
+      "game_id": 11290,
+      "channel_id": 67
+     }
+    ]
+   }
+   
