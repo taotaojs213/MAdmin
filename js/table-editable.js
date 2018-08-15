@@ -1,105 +1,6 @@
 $(function () {
-    var table_lang = {
-        "sProcessing": "处理中...",
-        "sLengthMenu": "每页显示 _MENU_ 条记录",
-        "sZeroRecords": "没有匹配结果",
-        "sInfo": "<font color='#aaa'> 当前显示 _START_ - _END_ 项，共 _TOTAL_ 项。</font>",
-        //"sInfo": "显示 _MENU_ 条 | 总共有 _TOTAL_ 条数据",
-        "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
-        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-        "sInfoPostFix": "",
-        //"sSearch": "搜索",
-        "sUrl": "",
-        "sEmptyTable": "表中数据为空",
-        "sLoadingRecords": "载入中...",
-        "sInfoThousands": ",",
-        "oPaginate": {
-          "sFirst": "首页",
-          "sPrevious": "上一页",
-          "sNext": "下一页",
-          "sLast": "末页",
-          "sJump": "跳转"
-        },
-        "oAria": {
-          "sSortAscending": ": 以升序排列此列",
-          "sSortDescending": ": 以降序排列此列"
-        }
-    };
-    var oTable;
-    oTable = $('#example1').dataTable({
-        language:table_lang,  // 提示信息
-        pagingType: "simple_numbers",
-        info: true,
-        //processing: true,
-        stateSave: false,//保存状态
-        ajax: {
-            url: 'http://127.0.0.1:8090/staff/findByObjList',
-            type: 'GET',
-            data: {
-                staffState: 0,
-            },
-            dataSrc: function(result){
-                //alert(result.object.length);
-                
-                return result.object;
-            },
-        },
-        columns:[{
-            data: 'id',
-            title: "序号",
-            sWidth: "30px",
-            sClass: "text-tables-center",
-            createdCell: function(nTd, sData, oData, iRow, iCol) {
-                var startnum = this.api().page() * (this.api().page.info().length);
-                $(nTd).html(iRow + 1 + startnum); //分页行号累加：$(nTd).html(iRow+1);
-            }
-        },{
-            data: 'staffName',
-            title: '项目名称',
-        },{
-            data: 'staffNo',
-            title: '项目编号',
-        },{
-            data: 'staffOpenid',
-            title: '绑定状态',
-            render: function(data){
-                var status = '';
-                if(data == null || data == ''){
-                    status = '未绑定';
-                }else{
-                    status = '已绑定';
-                }
-                return status;
-            }
-        },{
-            data: 'staffState',
-            title: '项目状态',
-            render: function(data){
-                var status = '';
-                switch(data){
-                    case 0: status = '未完成'; break;
-                    case 1: status = '已完成'; break;
-                }
-                return status;
-            }
-        },{
-            data: 'id',
-            title: '操作',
-            render: function(data){
-                var dom = '';
-                dom += '<td>';
-                dom += '    <button type="button" class="btn btn-danger btn-xs mbs edit"><i class="fa fa-trash-o"></i> 修改</button>';
-                dom += '    <button type="button" class="btn btn-danger btn-xs mbs delete"><i class="fa fa-trash-o"></i> 删除</button>';
-                dom += '    <button type="button" class="btn btn-danger btn-xs mbs repassword"><i class="fa fa-trash-o"></i> 重置密码</button>';
-                dom += '</td>';
-                return dom;
-            }
-        },],
-        // "infoCallback": function( settings, start, end, max, total, pre ) {
-        //     return "显示 _MENU_ 条 | 总共有" + total +"条数据";
-        // }
-        
-    });
+    var oTable = getStaffTable();
+    
     var nEditing = null;
 
     $('#example1').on('click', 'button.edit', function (e) {
@@ -122,7 +23,6 @@ $(function () {
 
     function editRow(oTable, nRow) {
         var aData = oTable.fnGetData(nRow);
-        console.log(aData);
         var rTds = $('>td', nRow);
         var wxNameCheck, stateSelect;
         if(aData.staffOpenid == undefined || aData.staffOpenid == null || aData.staffOpenid == ''){
@@ -145,27 +45,24 @@ $(function () {
         var aData = oTable.fnGetData(nRow);
         
         //console.log($("select", nRow).val());
-        console.log($("select option:selected",nRow).text());
-        var staffName = rInputs[0].value;
-        var staffNo = rInputs[1].value;
+        aData.staffName = rInputs[0].value;
+        aData.staffNo = rInputs[1].value;
         var wxNameCheck = $(rInputs[2]).is(':checked');
-        var staffState = Number($('select', nRow).val())
-        // if(aDatastaffOpenid)
-        var data;
+        if(!wxNameCheck){
+            aData.staffOpenid = ''
+        }
+        aData.staffState = Number($('select', nRow).val())
         // data.id = aData.id;
         // data.staffName = aData.staffName
-        console.log(aData);
         if(updateStaff(aData)){
             //oTable.cell(nRow, 2).data("New Text").draw();
-            console.log(staffState);
-            oTable.fnUpdate($('td:first',nRow).html(),nRow, 0, false)
-            oTable.fnUpdate(rInputs[0].value, nRow, 1, false);
-            oTable.fnUpdate(rInputs[1].value, nRow, 2, false);
-            if(!$(rInputs[2]).is(':checked')) oTable.fnUpdate('', nRow, 3, false);//oTable.cell(nRow, 3).data('').draw();
-            oTable.fnUpdate(staffState, nRow, 4, false);
-            console.log(aData.staffState);
-            //oTable.fnDraw();
-            console.log(aData.staffState);
+            
+            oTable.fnUpdate(aData.staffName, nRow, 1, false);
+            oTable.fnUpdate(aData.staffNo, nRow, 2, false);
+            if(!wxNameCheck){
+                oTable.fnUpdate('', nRow, 3, false);//oTable.cell(nRow, 3).data('').draw();
+            }
+            oTable.fnUpdate(aData.staffState, nRow, 4, false);
         }
     }
 
@@ -175,27 +72,44 @@ $(function () {
             return;
         }
         var nRow = $(this).parents('tr')[0];
+        var aData = oTable.fnGetData(nRow);
+        deleteStaff(aData.id);
         oTable.fnDeleteRow(nRow);
     });
 
     $('#example1').on('click', 'button.cancel', function (e) {
         e.preventDefault();
-        if ($(this).attr("data-mode") == "new") {
-            var nRow = $(this).parents('tr')[0];
-            oTable.fnDeleteRow(nRow);
-        } else {
-            rollbackRow(oTable, nEditing);
-            nEditing = null;
-        }
+        rollbackRow(oTable, nEditing);
+        nEditing = null;
     });
-    $('#example1').on('click', 'button.repassword', function (e) {
+    $('#example1').on('click', 'button.reset', function (e) {
+        var that = this;
         bootbox.prompt({ 
             size: "large",
             title: "确定使用以下密码吗？", 
             callback: function(result){ 
                 if(result != null){
-                    //TODO 
-                    console.log($('.modal-dialog input').val());
+                    
+                    var nRow = $(that).parents('tr')[0];
+                    var aData = oTable.fnGetData(nRow);
+                    console.log(aData);
+
+                    if(resetStaffPwd(aData.id, pwdStr)){
+                        
+                        // try{
+                            
+                        //     toastr.success('新密码 ' + pwdStr + ' 已成功复制到剪贴板！');
+                        //     console.log(11111111)
+                        // } catch(err){
+                            bootbox.alert({
+                                title: '复制',
+                                message: '请手动复制密码[ ' + pwdStr + ' ]',
+                            });
+                        // }finally{
+                        //     //console.log($('.modal-dialog input').val());
+                        // }
+                        
+                    }
                 }
             },
             backdrop: true,
@@ -205,17 +119,154 @@ $(function () {
             pwdStr += Math.floor(Math.random()*10);
         }
         $('.modal-dialog input').val(pwdStr);
+        $('.modal-dialog input').change(function(){
+            pwdStr = $('.modal-dialog input').val();
+        })
+
+        var copyBtn = new ClipboardJS('.modal-dialog .btn-primary');
+        copyBtn.on('success', function(e){
+            alert("复制成功！")
+            console.log(e);
+        })
+        copyBtn.on('error',function(e){
+            console.log(e);
+        })
+
     });
+
+    $('#example1').on('click', 'button.unbind', function (e) {
+        var nRow = $(this).parents('tr')[0];
+        var data = oTable.fnGetData(nRow);
+
+        if(unbindStaffWX(data.id)){
+            //oTable.cell(nRow, 2).data("New Text").draw();
+            oTable.fnUpdate('', nRow, 3, false);//oTable.cell(nRow, 3).data('').draw();
+            oTable.fnDraw();
+        }
+    });
+
+    $('#add-staff').on('click',function (e) {
+        var giCount = 3;
+        var dialog = bootbox.dialog({
+            message: getAddStaffForm(),
+            title: "新增项目",
+            buttons:{
+                cancel:{
+                    label: "放弃",
+                    className: "add_staff_cancel",
+                    callback: function () {
+                        var flag = false;
+                        var confirmFlag = false;
+                        console.log('aaaa')
+                        var a = bootbox.confirm({
+                            title: "提示",
+                            message: "确定要取消吗？取消将会丢失当前数据",
+                            callback: function(e){
+                                console.log(e)
+                                flag = e;
+                                confirmFlag = true;
+                                
+                            }
+                        })
+                        if(confirmFlag) {
+                            console.log("true")
+                            return flag;
+                        }else{
+                            console.log("false")
+                        };
+                        console.log("wtf")
+                        console.log(dialog)
+                        return false;
+                    }
+                },
+                ok:{
+                    label: "提交",
+                    className: "btn-primary",
+                    callback: function () {
+                        var flag = true;
+                        var $staffName = $('#add_staffName');
+                        var $staffPwd = $('#add_staffPwd');
+                        var $staffNo = $('#add_staffNo');
+                        var staffName = $staffName.val();
+                        var staffPwd = $staffPwd.val();
+                        var staffNo = $staffNo.val();
+                        if(staffName == ''){
+                            $staffName.css({"border-color": "red"})
+                            $staffName.after(getInputLeftMsg("项目名称不能为空"))
+                            flag = false;
+                        }
+                        if(staffNo == ''){
+                            $staffNo.css({"border-color": "red"})
+                            $staffNo.after(getInputLeftMsg("项目编号不能为空"))
+                            flag = false;
+                        }else if(staffNo.length < 4){
+                            $staffNo.css({"border-color": "red"})
+                            $staffNo.after(getInputLeftMsg("长度至少为四位"))
+                            flag = false;
+                        }
+                        if(staffPwd == ''){
+                            $staffPwd.css({"border-color": "red"})
+                            $staffPwd.after(getInputLeftMsg("项目密码不能为空"))
+                            flag = false;
+                        }else if(staffPwd.length < 4){
+                            $staffPwd.css({"border-color": "red"})
+                            $staffPwd.after(getInputLeftMsg("长度至少为四位"))
+                            flag = false;
+                        }
+                        if(flag && addStaff(staffNo, staffName, staffPwd)){
+                            toastr.success("刷新页面将显示新增内容");
+                        }
+                        return flag;
+                    }
+                }
+            }
+        })
+        // oTable.fnAddData( [
+        //     giCount+".1",
+        //     giCount+".2",
+        //     giCount+".3",
+        //     giCount+".4" ]
+        // );
+        // oTable.fnDraw();
+    });
+
+    $('body').on('click','#add_staff_submit',function(e){
+        alert("1111");
+        var staffName = $('#add_staffName').val();
+        var staffPwd = $('#add_staffPwd').val();
+        var staffNo = $('#add_staffNo').val();
+        if(addStaff(staffNo, staffName, staffPwd)){
+            onEscape();
+        }
+    });
+
+    $('body').on('click', '#add_staff_cancel', function(e){
+        onEscape();
+    })
+
     function rollbackRow(oTable, nRow) {
         var aData = oTable.fnGetData(nRow);
-        var rTds = $('>td', nRow);
-        for (var i = 0, iLen = rTds.length; i < iLen; i++) {
-            oTable.fnUpdate(aData[i], nRow, i, false);
-        }
+        // var rTds = $('>td', nRow);
+        // for (var i = 0, iLen = rTds.length; i < iLen; i++) {
+        //     oTable.fnUpdate(aData[i], nRow, i, false);
+        // }
+        oTable.fnUpdate(aData.staffName, nRow, 1, false);
+        oTable.fnUpdate(aData.staffNo, nRow, 2, false);
+        oTable.fnUpdate(aData.staffOpenid, nRow, 3, false);
+        oTable.fnUpdate(aData.staffState, nRow, 4, false);
         oTable.fnDraw();
     }
     //console.log(oTable);
     //oTable.language.sLengthMenu = "每页显示 _MENU_ 条，共 " + oTable.Rows.Count + " 条shuj。"
+
+    $('body').on('focus', 'input[type="text"]', function(e){
+        console.log($('input[type="text"]'))
+        var input = e.target;
+        $input = $(input);
+        $input.css({"border-color": ""})
+        $('.text-msg-warning', $input.parent()).remove();
+    })
+
 });
 
 
