@@ -101,12 +101,12 @@ Chat
                     <div class="chat-content">
                         <ul class="chat-box-body">
                             <li>
-                                <p><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" class="avt" /><span class="user">John Doe</span><span class="time">09:33</span>
+                                <p><img src="/images/head_portrait.jpg" class="avt" /><span class="user">财务管理</span><span class="time">09:33</span>
                                 </p>
                                 <p>Hi Swlabs, we have some comments for you.</p>
                             </li>
                             <li class="odd">
-                                <p><img src="https://s3.amazonaws.com/uifaces/faces/twitter/alagoon/48.jpg" class="avt" /><span class="user">Swlabs</span><span class="time">09:33</span>
+                                <p><img src="/images/head_portrait.jpg" class="avt" /><span class="user">Swlabs</span><span class="time">09:33</span>
                                 </p>
                                 <p>Hi, we're listening you...</p>
                             </li>
@@ -154,13 +154,13 @@ Chat
     <script src="vendors/DataTables/media/js/jquery.dataTables.js"></script>
     <script src="vendors/DataTables/media/js/dataTables.bootstrap.js"></script>
     <script src="vendors/DataTables/jquery.jeditable.js"></script>
-    <script src="js/table-editable.js"></script>
     <!-- 弹出框 -->
     <script src="vendors/bootbox.min.js"></script>
     <!-- 侧边提示消息 -->
     <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <!-- 文本复制插件 -->
     <script src="vendors/clipboard/clipboard.min.js"></script>
+    <!--  -->
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="vendors/intro.js/intro.js"></script>
     <script src="vendors/flot-chart/jquery.flot.js"></script>
@@ -174,10 +174,17 @@ Chat
     <script src="vendors/calendar/zabuto_calendar.min.js"></script>
     <script src="vendors/sco.message/sco.message.js"></script>
     <script src="vendors/intro.js/intro.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/allModel.js"></script>
-    <script src="js/Myjs.js"></script>
+    <script src="js/MyDateUtil.js"></script>
+    <script src="js/ui-tabs.js"></script>
+    
+    <script src="js/allChart.js"></script>
     <script src="js/allTable.js"></script>
+    <script src="js/allModel.js"></script>
+    
+    <script src="js/Myjs.js"></script>
+    <script src="js/MyRoute.js"></script>
+    
+    
     
 
 <script>
@@ -193,14 +200,14 @@ Chat
 
     $.ajax({
         type: "GET",
-        url: "html/staffData.html",
+        url: "html/index.html",
         cache: false,
         async: false,
         success: function(data){
             $("#wrapper").append(data);
             // $.ajax({
             //     type: "GET",
-            //     url: "http://localhost:8090/staff/findByObjList",
+            //     url: "https://www.ntjingui.cn/staff/findByObjList",
             //     cache: false,
             //     async: true,
             //     data: {

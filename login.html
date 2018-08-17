@@ -9,8 +9,6 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="Thu, 19 Nov 1900 08:52:00 GMT">
     <!--Loading bootstrap css-->
-    <link type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800">
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
     <link type="text/css" rel="stylesheet" href="vendors/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.css">
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
@@ -26,14 +24,14 @@
 <body id="lock-screen-page">
     <div class="page-form">
         <div class="body-content">
-            <div id="lock-screen-avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" alt="" class="img-responsive img-circle">
+            <div id="lock-screen-avatar"><img style="height: 148px;" src="/images/head_portrait.jpg" alt="" class="img-responsive img-circle">
             </div>
             <div id="lock-screen-info">
-                <h1>John Doe</h1>
-                <div class="email">example@email.com</div>
-                <form action="index.html" class="mtl mbl">
+                <h1>财务管理</h1>
+                <div class="email"></div>
+                <form action="javascript:login()" class="mtl mbl">
                     <div class="input-icon right"><i class="fa fa-unlock"></i>
-                        <input type="password" value="123456789" class="form-control">
+                        <input id="userPwd" type="password" placeholder="请输入密码" class="form-control">
                     </div>
                 </form>
             </div>
@@ -49,7 +47,68 @@
     <script src="js/respond.min.js"></script>
     <script src="vendors/iCheck/icheck.min.js"></script>
     <script src="vendors/iCheck/custom.min.js"></script>
+    <!-- 弹出框 -->
+    <script src="vendors/bootbox.min.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
     <script>
+        $(function(){
+			var cookie = $.cookie('uAdminCookie');
+    
+			$.ajax({
+				url:'https://www.ntjingui.cn/user/cookie',
+				type: "GET",
+				cache: false,
+				async: true,
+				data: {
+					cookie: cookie
+				},
+				success: function(obj){
+					if(obj.success == 1){
+						location.href="/indexData.html"
+					}
+				},
+				error: function(d,msg){
+					bootbox.alert({
+						title: '错误',
+						message: msg,
+						backdrop: true,
+					});
+				}
+			})
+		})
+        function login(){
+            var pwd = $("#userPwd").val()
+            $.ajax({
+                url:'https://www.ntjingui.cn/user/login',
+                type: "GET",
+                cache: false,
+                async: true,
+                data: {
+                    password: pwd
+                },
+                success: function(obj){
+                    if(obj.success == 1){
+                        console.log(obj.object.cookie)
+                        $.cookie('uAdminCookie', obj.object.cookie, { expires: 5 });
+                        location.href="/indexData.html"
+                    }else{
+                        bootbox.alert({
+                            title: '提示',
+                            message: obj.msg,
+                            backdrop: true,
+                        });
+                    }
+                },
+                error: function(d,msg){
+                    bootbox.alert({
+                        title: '错误',
+                        message: msg,
+                        backdrop: true,
+                    });
+                }
+            })
+        }
+
         //BEGIN CHECKBOX & RADIO
         $('input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_minimal-grey',

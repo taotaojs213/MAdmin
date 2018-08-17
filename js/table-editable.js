@@ -214,7 +214,9 @@ $(function () {
                             flag = false;
                         }
                         if(flag && addStaff(staffNo, staffName, staffPwd)){
-                            toastr.success("刷新页面将显示新增内容");
+                            gotoPage("staffData");
+                        }else{
+                            flag = false
                         }
                         return flag;
                     }

@@ -29,14 +29,13 @@ function getStaffTable(){
         language:table_lang,  // 提示信息
         pagingType: "simple_numbers",
         info: true,
-        order: [[0,"desc"]],
+        order: [[4,"desc"]],
         //processing: true,
         stateSave: false,//保存状态
         ajax: {
-            url: 'http://127.0.0.1:8090/staff/findByObjList',
+            url: 'https://www.ntjingui.cn/staff/findByObjList',
             type: 'GET',
             data: {
-                staffState: 0,
             },
             dataSrc: function(result){
                 //alert(result.object.length);
@@ -77,6 +76,7 @@ function getStaffTable(){
             render: function(data){
                 var status = '';
                 switch(data){
+                    case -1: status = '中断'; break;
                     case 0: status = '未完成'; break;
                     case 1: status = '已完成'; break;
                 }

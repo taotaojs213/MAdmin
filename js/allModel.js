@@ -79,3 +79,58 @@ function getInputLeftMsg(msg){
     str += '</span>';
     return str;
 }
+
+function getIndexTable(data){
+    var tableData = data.data;
+    var tableName = data.tableName;
+    var str = '';
+    str += '<table class="table table-hover">';
+    str += '    <thead><tr>';
+    str += '            <th>#</th>';
+    tableName.forEach(function(value){
+        str += '            <th>' + value + '</th>';
+    })
+    str += '    </tr></thead>';
+    str += '    <tbody>';
+    tableData.forEach(function(value,index){
+        str += '        <tr>';
+        str += '            <td>' + ++index + '</td>';
+        str += '            <td>' + timeFormat(new Date(value[0])) + '</td>';
+        str += '            <td>' + value[1] + '</td>';
+        str += '            <td>' + value[2] + '</td>';
+        str += '            <td>' + value[3] + '</td>';
+        str += '            <td><span class="label label-sm label-success">查看详情</span></td>';
+        str += '        </tr>';
+    })
+    str += '    </tbody>';
+    str += '</table>';
+    return str;
+}
+
+/* 使用编号创建一个首页panel框
+ * no：唯一编号
+ * title：Panel标题
+ * style：Panel样式
+ */
+function getIndexPanel(data){
+    var index = data.no
+    var title = data.title
+    var style = data.style;
+    var str = '';
+    str += '<div class="col-lg-6">';
+    str += '<div class="panel ' + style + '">';
+    str += '    <div class="panel-heading clearfix"><span class="mts pull-left">' + title + '</span>';
+    str += '        <div class="toolbars">';
+    str += '            <div class="btn-group mts"><a href="javascript:;"><i class="fa fa-cogs"></i></a><a href="javascript:;"><i class="fa fa-edit"></i></a><a href="javascript:;"><i class="fa fa-download"></i></a><a href="javascript:;"><i class="fa fa-paperclip"></i></a></div>';
+    str += '        </div>';
+    str += '    </div>';
+    str += '    <div class="panel-body">';
+    str += '        <div id="dossier' + index + '" style="width: 100%; height:300px"></div>';
+    str += '    </div>';
+    str += '    <div class="panel-body">';
+    str += '       <div id="dossierTable' + index + '"></div>';
+    str += '    </div>';
+    str += '</div>';
+    str += '</div>';
+    return str;
+}
