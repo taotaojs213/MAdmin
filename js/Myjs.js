@@ -1,22 +1,25 @@
+var webUrl = 'http://localhost:8090/'
 
 function sleep(d){
     for(var t = Date.now();Date.now() - t <= d;);
 }
 
-function addStaff(no, name, pwd){
+function addStaff(no, name, pwd, staffList){
     console.log(no);
     console.log(name);
     console.log(pwd);
+    console.log(staffList);
     var flag = false;
     $.ajax({
-        url:'https://www.ntjingui.cn/staff/add',
+        url: webUrl + 'staff/add',
         type: "GET",
         cache: false,
         async: false,
         data: {
             staffNo: no,
             staffName: name,
-            staffPwd: pwd
+            staffPwd: pwd,
+            texts: staffList
         },
         success: function(obj){
             if(obj.success == 1){
@@ -41,7 +44,7 @@ function updateStaff(data){
     var staffState = new Number(data.staffState);
     console.log(staffState)
     $.ajax({
-        url:'https://www.ntjingui.cn/staff/update',
+        url: webUrl + 'staff/update',
         type: "GET",
         cache: false,
         async: false,
@@ -87,7 +90,7 @@ function deleteStaff(id){
     var flag = false;
     console.log(id)
     $.ajax({
-        url:'https://www.ntjingui.cn/staff/delete',
+        url: webUrl + 'staff/delete',
         type: "GET",
         cache: false,
         async: false,
@@ -116,7 +119,7 @@ function resetStaffPwd(id, pwd){
     console.log(id)
     console.log(pwd)
     $.ajax({
-        url:'https://www.ntjingui.cn/staff/update',
+        url: webUrl + 'staff/update',
         type: "GET",
         cache: false,
         async: false,
@@ -144,7 +147,7 @@ function unbindStaffWX(id){
     var flag = false;
     console.log(id)
     $.ajax({
-        url:'https://www.ntjingui.cn/staff/update',
+        url: webUrl + 'staff/update',
         type: "GET",
         cache: false,
         async: false,
@@ -172,7 +175,7 @@ function getLastWeekDossier(staffId, staffNo){
     //console.log(staffId);
     var flag = null;
     $.ajax({
-        url:'https://www.ntjingui.cn/workDossier/findLastWeekDossier',
+        url: webUrl + 'workDossier/findLastWeekDossier',
         type: "GET",
         cache: false,
         async: false,
@@ -235,7 +238,7 @@ function getLastWeekDossier(staffId, staffNo){
 function getActivityStaff(){
     var flag = false;
     $.ajax({
-        url:'https://www.ntjingui.cn/staff/findByObjList',
+        url: webUrl + 'staff/findByObjList',
         type: "GET",
         cache: false,
         async: false,
@@ -262,4 +265,36 @@ function getActivityStaff(){
         }
     })
     return flag;
+}
+
+function getStaff(id){
+    var flag;
+    $.ajax({
+        url: webUrl + 'staff/getStaff',
+        type: "GET",
+        cache: false,
+        async: false,
+        timeout : 10000,
+        data: {
+            id: id,
+        },
+        success: function(obj){
+            console.log(obj)
+            if(obj.success == 1){
+                flag = obj.object;
+            }else{
+                bootbox.alert({
+                    title: '错误提示',
+                    message: obj.msg,
+                });
+            }
+        },
+        error: function(d,msg){
+            bootbox.alert({
+                title: '错误提示',
+                message: '获取服务器信息出错，请刷新重试或联系管理员',
+            });
+        }
+    })
+    return flag[0];
 }

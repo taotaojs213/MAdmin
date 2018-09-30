@@ -1,6 +1,16 @@
 $(function () {
     var oTable = getStaffTable();
-    
+    console.log("=========================================================================")
+    console.log($("#example1 tbody tr"))
+    $(".row").on("dblclick","#example1 tbody tr",function (e) { //双击相应事件
+        console.log($(this));
+        var aData = oTable.fnGetData($(this));
+        console.log(aData.id);
+        var ajax = getStaff(aData.id);
+        console.log(ajax)
+        gotoPage("staffWorkTable","<script>var ajax = " + JSON.stringify(ajax) + "</script>");
+    });
+
     var nEditing = null;
 
     $('#example1').on('click', 'button.edit', function (e) {
@@ -187,9 +197,11 @@ $(function () {
                         var $staffName = $('#add_staffName');
                         var $staffPwd = $('#add_staffPwd');
                         var $staffNo = $('#add_staffNo');
+                        var $staffList = $('#staffTags')
                         var staffName = $staffName.val();
                         var staffPwd = $staffPwd.val();
                         var staffNo = $staffNo.val();
+                        var staffList = $staffList.val();
                         if(staffName == ''){
                             $staffName.css({"border-color": "red"})
                             $staffName.after(getInputLeftMsg("项目名称不能为空"))
@@ -213,7 +225,7 @@ $(function () {
                             $staffPwd.after(getInputLeftMsg("长度至少为四位"))
                             flag = false;
                         }
-                        if(flag && addStaff(staffNo, staffName, staffPwd)){
+                        if(flag && addStaff(staffNo, staffName, staffPwd,staffList)){
                             gotoPage("staffData");
                         }else{
                             flag = false
@@ -230,17 +242,27 @@ $(function () {
         //     giCount+".4" ]
         // );
         // oTable.fnDraw();
+        $("#staffTags").tagsInput({
+            'height':'150px', //设置高度
+            'width':'300px',  //设置宽度
+            'interactive':true, //是否允许添加标签，false为阻止
+            'defaultText':'回车分隔工种', //默认文字
+            'removeWithBackspace' : true, //是否允许使用退格键删除前面的标签，false为阻止
+            'minChars' : 0, //每个标签的小最字符
+            'maxChars' : 0, //每个标签的最大字符，如果不设置或者为0，就是无限大
+            'placeholderColor' : '#666666' //设置defaultText的颜色
+         });
     });
 
-    $('body').on('click','#add_staff_submit',function(e){
-        alert("1111");
-        var staffName = $('#add_staffName').val();
-        var staffPwd = $('#add_staffPwd').val();
-        var staffNo = $('#add_staffNo').val();
-        if(addStaff(staffNo, staffName, staffPwd)){
-            onEscape();
-        }
-    });
+    // $('body').on('click','#add_staff_submit',function(e){
+    //     alert("1111");
+    //     var staffName = $('#add_staffName').val();
+    //     var staffPwd = $('#add_staffPwd').val();
+    //     var staffNo = $('#add_staffNo').val();
+    //     if(addStaff(staffNo, staffName, staffPwd)){
+    //         onEscape();
+    //     }
+    // });
 
     $('body').on('click', '#add_staff_cancel', function(e){
         onEscape();

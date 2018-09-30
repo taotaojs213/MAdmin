@@ -60,6 +60,12 @@ function getAddStaffForm(){
     str += '                <input id="add_staffPwd" type="text" value="" placeholder="大于八位" class="form-control" />';
     str += '            </div>';
     str += '        </div>';
+    str += '        <div class="form-group">';
+    str += '            <label for="" class="col-md-3 control-label">工种列表：</label>';
+    str += '            <div class="col-md-6">';
+    str += '                <input name="tags" id="staffTags" value="" />';
+    str += '            </div>';
+    str += '        </div>';
     //str += '        <div class="form-group">';
     //str += '            <label for="" class="col-md-3 control-label"></label>';
     //str += '            <div class="col-md-9">';

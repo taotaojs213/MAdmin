@@ -1,5 +1,5 @@
-function gotoPage(page){
-
+function gotoPage(page, str){
+    console.log(str)
     $('#page-wrapper').remove();
     $.ajax({
         type: "GET",
@@ -7,7 +7,7 @@ function gotoPage(page){
         cache: false,
         async: false,
         success: function(data){
-            $("#wrapper").append(data);
+            $("#wrapper").append(str + data);
         }
     })
 }

@@ -1,0 +1,353 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/vendors/bootstrap-table/bootstrap-table.min.css">
+<script src="/vendors/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/vendors/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/vendors/jquery.table2excel.min.js"></script>
+<script src="/js/allTable.js"></script>
+<div id="page-wrapper">
+    <div class="page-content">
+        <div class="row">
+            <div class="scroll-div">
+                <input id="inputTable"  class="btn btn-red"  type="button" value="导出EXCEL" onclick="javascript:excels('detail-table')" />
+                <div class="table-scroll">
+                    <table id="detail-table" class="table table-bordered staffTable">
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+$(function(){
+    // console.log(ajax)
+    // if(ajax == undefined || ajax == null){
+    // //var ajax = {"msg":"查询成功！","success":1,"object":[{"id":47,"staffNo":"rggaj","staffOpenid":"o0Eg34wWmJFW3YTSY-APdxKYhlhk","staffName":"如皋公安局","staffState":0,"creationTime":"2018-09-21T01:55:49.000+0000","updateTime":"2018-09-27T05:01:02.000+0000","staffUser":"佘小琴,吕婷婷,俞吴娟,茆开芳,张慧,姚兴兰,石蓉蓉,倪平平,张培培,徐敏,,,,,,","texts":"整理,扫描,切图,卷内目录,装订-检查PDF,装订-检查表格,装订-复制文书,备注,组长工序,装订","columnList":{"张培培":["备注"],"石蓉蓉":["扫描"],"倪平平":["切图","整理"],"吕婷婷":["切图"],"徐敏":["备注"],"佘小琴":["组长工序"],"张慧":["扫描"],"姚兴兰":["扫描"],"茆开芳":["装订","装订-检查表格","整理"],"俞吴娟":["整理"]},"dossierList":[{"id":47,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":113,"name":"佘小琴","dossierId":47,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"复制法律文书"}}]},{"id":49,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":128,"name":"佘小琴","dossierId":49,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查JPG"}}]},{"id":50,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"5655","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":129,"name":"吕婷婷","dossierId":50,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"5655"}}]},{"id":51,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"5912","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":130,"name":"倪平平","dossierId":51,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"5912"}}]},{"id":52,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":131,"name":"张培培","dossierId":52,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"复制法律文书39本卷内目录710"}}]},{"id":53,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"45"},"workloadList":[{"id":132,"name":"俞吴娟","dossierId":53,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{}}]},{"id":54,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"34"},"workloadList":[{"id":133,"name":"茆开芳","dossierId":54,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{}}]},{"id":55,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"76","整理":"0"},"workloadList":[{"id":134,"name":"茆开芳","dossierId":55,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"装订-检查表格":"76"}}]},{"id":56,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3120","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":135,"name":"石蓉蓉","dossierId":56,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3120"}}]},{"id":57,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3141","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":136,"name":"张慧","dossierId":57,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3141"}}]},{"id":58,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3053","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":137,"name":"姚兴兰","dossierId":58,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3053"}}]},{"id":60,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":145,"name":"佘小琴","dossierId":60,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查jpg"}}]},{"id":61,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"6808","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":146,"name":"吕婷婷","dossierId":61,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"6808"}}]},{"id":62,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"40"},"workloadList":[{"id":147,"name":"俞吴娟","dossierId":62,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"40"}}]},{"id":63,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"90","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":148,"name":"茆开芳","dossierId":63,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"装订":"90"}}]},{"id":64,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"32"},"workloadList":[{"id":149,"name":"茆开芳","dossierId":64,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"32"}}]},{"id":65,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3180","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":150,"name":"张慧","dossierId":65,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3180"}}]},{"id":66,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3073","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":151,"name":"姚兴兰","dossierId":66,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3073"}}]},{"id":67,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3095","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":152,"name":"石蓉蓉","dossierId":67,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3095"}}]},{"id":68,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":153,"name":"倪平平","dossierId":68,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"2773检查pdf6.5小时"}}]},{"id":69,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":154,"name":"张培培","dossierId":69,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"复制法律文书1236张卷目录748条"}}]},{"id":70,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":155,"name":"佘小琴","dossierId":70,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查jpg"}}]},{"id":71,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"6453","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":156,"name":"吕婷婷","dossierId":71,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"6453"}}]},{"id":72,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"38"},"workloadList":[{"id":157,"name":"俞吴娟","dossierId":72,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"38"}}]},{"id":73,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"101","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":158,"name":"茆开芳","dossierId":73,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"装订":"101"}}]},{"id":74,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"30"},"workloadList":[{"id":159,"name":"茆开芳","dossierId":74,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"30"}}]},{"id":75,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3257","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":160,"name":"张慧","dossierId":75,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3257"}}]},{"id":76,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3098","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":161,"name":"姚兴兰","dossierId":76,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3098"}}]},{"id":77,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3187","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":162,"name":"石蓉蓉","dossierId":77,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3187"}}]},{"id":78,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"36"},"workloadList":[{"id":163,"name":"倪平平","dossierId":78,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"36"}}]},{"id":79,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"2724","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":164,"name":"倪平平","dossierId":79,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"2724"}}]},{"id":80,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":165,"name":"徐敏","dossierId":80,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"检查pdf"}}]},{"id":83,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":184,"name":"佘小琴","dossierId":83,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查jpg"}}]}]}]}
+    // var ajax = {"msg":"查询成功！","success":1,"object":[{"id":47,"staffNo":"rggaj","staffOpenid":"o0Eg34wWmJFW3YTSY-APdxKYhlhk","staffName":"如皋公安局","staffState":0,"creationTime":"2018-09-21T01:55:49.000+0000","updateTime":"2018-09-30T04:55:59.000+0000","staffUser":"佘小琴,吕婷婷,俞吴娟,茆开芳,张慧,姚兴兰,石蓉蓉,倪平平,张培培,徐敏","texts":"整理,扫描,切图,卷内目录,装订-检查PDF,装订-检查表格,装订-复制文书,备注,组长工序,装订","columnList":{"张培培":["备注"],"石蓉蓉":["扫描","备注"],"倪平平":["备注","切图","整理"],"吕婷婷":["切图"],"徐敏":["备注","整理"],"佘小琴":["组长工序"],"张慧":["扫描"],"姚兴兰":["扫描"],"茆开芳":["装订","装订-检查表格","整理"],"俞吴娟":["备注","整理"]},"dossierList":[{"id":47,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":113,"name":"佘小琴","dossierId":47,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"复制法律文书"}}]},{"id":49,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":128,"name":"佘小琴","dossierId":49,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查JPG"}}]},{"id":50,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"5655","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":129,"name":"吕婷婷","dossierId":50,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"5655"}}]},{"id":51,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"5912","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":130,"name":"倪平平","dossierId":51,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"5912"}}]},{"id":52,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":131,"name":"张培培","dossierId":52,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"复制法律文书39本卷内目录710"}}]},{"id":53,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"45"},"workloadList":[{"id":132,"name":"俞吴娟","dossierId":53,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{}}]},{"id":54,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"34"},"workloadList":[{"id":133,"name":"茆开芳","dossierId":54,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{}}]},{"id":55,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"76","整理":"0"},"workloadList":[{"id":134,"name":"茆开芳","dossierId":55,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"装订-检查表格":"76"}}]},{"id":56,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3120","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":135,"name":"石蓉蓉","dossierId":56,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3120"}}]},{"id":57,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3141","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":136,"name":"张慧","dossierId":57,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3141"}}]},{"id":58,"createDate":"2018-09-21","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3053","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":137,"name":"姚兴兰","dossierId":58,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3053"}}]},{"id":60,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":145,"name":"佘小琴","dossierId":60,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查jpg"}}]},{"id":61,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"6808","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":146,"name":"吕婷婷","dossierId":61,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"6808"}}]},{"id":62,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"40"},"workloadList":[{"id":147,"name":"俞吴娟","dossierId":62,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"40"}}]},{"id":63,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"90","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":148,"name":"茆开芳","dossierId":63,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"装订":"90"}}]},{"id":64,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"32"},"workloadList":[{"id":149,"name":"茆开芳","dossierId":64,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"32"}}]},{"id":65,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3180","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":150,"name":"张慧","dossierId":65,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3180"}}]},{"id":66,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3073","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":151,"name":"姚兴兰","dossierId":66,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3073"}}]},{"id":67,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3095","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":152,"name":"石蓉蓉","dossierId":67,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3095"}}]},{"id":68,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":153,"name":"倪平平","dossierId":68,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"2773检查pdf6.5小时"}}]},{"id":69,"createDate":"2018-09-25","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":154,"name":"张培培","dossierId":69,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"复制法律文书1236张卷目录748条"}}]},{"id":70,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":155,"name":"佘小琴","dossierId":70,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查jpg"}}]},{"id":71,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"6453","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":156,"name":"吕婷婷","dossierId":71,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"6453"}}]},{"id":72,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"38"},"workloadList":[{"id":157,"name":"俞吴娟","dossierId":72,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"38"}}]},{"id":73,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"101","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":158,"name":"茆开芳","dossierId":73,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"装订":"101"}}]},{"id":74,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"30"},"workloadList":[{"id":159,"name":"茆开芳","dossierId":74,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"30"}}]},{"id":75,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3257","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":160,"name":"张慧","dossierId":75,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3257"}}]},{"id":76,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3098","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":161,"name":"姚兴兰","dossierId":76,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3098"}}]},{"id":77,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3187","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":162,"name":"石蓉蓉","dossierId":77,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3187"}}]},{"id":78,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"36"},"workloadList":[{"id":163,"name":"倪平平","dossierId":78,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"36"}}]},{"id":79,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"2724","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":164,"name":"倪平平","dossierId":79,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"2724"}}]},{"id":80,"createDate":"2018-09-26","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":165,"name":"徐敏","dossierId":80,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"检查pdf"}}]},{"id":83,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":184,"name":"佘小琴","dossierId":83,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查jpg"}}]},{"id":86,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":195,"name":"佘小琴","dossierId":86,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"组长工序":"检查jpg"}}]},{"id":87,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"6383","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":196,"name":"吕婷婷","dossierId":87,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"切图":"6383"}}]},{"id":88,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"11"},"workloadList":[{"id":197,"name":"俞吴娟","dossierId":88,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"录入441","整理":"11"}}]},{"id":89,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"30","切图":"0","装订-检查表格":"0","整理":"34"},"workloadList":[{"id":198,"name":"茆开芳","dossierId":89,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"装订":"30","整理":"34"}}]},{"id":90,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3066","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":199,"name":"张慧","dossierId":90,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3066"}}]},{"id":91,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"3057","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":200,"name":"姚兴兰","dossierId":91,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"扫描":"3057"}}]},{"id":92,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":201,"name":"石蓉蓉","dossierId":92,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"请假"}}]},{"id":93,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"0"},"workloadList":[{"id":202,"name":"倪平平","dossierId":93,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"备注":"检查pdf"}}]},{"id":94,"createDate":"2018-09-28","staffId":47,"sum":0,"sumMap":{"装订-检查PDF":"0","装订-复制文书":"0","卷内目录":"0","扫描":"0","组长工序":"0","备注":"0","装订":"0","切图":"0","装订-检查表格":"0","整理":"15"},"workloadList":[{"id":203,"name":"徐敏","dossierId":94,"remark":null,"multiIndex":[-1,-1],"number":null,"numMapStr":null,"numMap":{"整理":"15"}}]}]}]}
+    // ajax = ajax.object[0];
+    // //ajax = JSON.parse(ajax);
+    // }
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++")
+    console.log(ajax);
+    var obj = ajax,staffName,headName = "",headWork = "", mybody = "", head = [], work =[], body = [], name, columnBody;
+    var staffIndex = 0;
+    console.log("================================================")
+    //console.log(ajax.object[0].dossierList.length);
+    //console.log(ajax.object.staffUser.length);
+    //console.log(ajax.object.sumMap.length);
+    var tableData = undefined;
+
+    /*
+    总数的表格
+    双层循环
+    查找对应的Key
+    Key肯定是循环得到的
+    不存在就填充为0
+    
+    第一层循环：用户名
+    第二层循环：工种
+    对应了workload中的name和numMap
+
+    行数据则对应着dossierList
+
+    总体的结构就是dossierList代表某一行，而行中有workloadList，
+    将workloadList循环，找到与name相对应的workload，
+    找到numMap中与Key(就是工种)对应的值，写入数组中
+
+    其实就是从三个维度查找数据嘛
+    员工名，工种，日期
+
+
+    */
+
+    var loadwork,dossierIndex=-1,tableCol, staffUsers, texts, loadSumMap;
+
+    //处理总和数据(每日总和/月末总和)
+    //直接组成表格
+    var o = obj;
+    if(o.dossierList[0] == undefined){
+        //TODO 判断dossier为空时
+    }
+    texts = o.texts.split(",");
+    staffUsers = o.staffUser.split(",");
+    var dossierSumData = Array.apply(null, Array(texts.length)).map(() => 0);
+
+    var e = obj;
+    console.log(e)
+    //tableData = [[e.dossierList.length],[e.staffUser.split(",").length*e.texts.split(",").length]];
+    
+    head = e.columnList;
+    body = e.dossierList;
+    console.log(head);
+    console.log(body);
+    
+    var sumNumber = 0;
+    $.each(head, function(hh){
+        $.each(head[hh], function(hhh){
+            sumNumber++;
+        })
+    });
+
+    tableData = new Array(body.length);
+
+    $.each(body, function(b){//每一行
+        dossierIndex++;
+        var d = body[b];//获得当天数据
+        var loadList = d.workloadList;//获得当天workload数据
+        var eachFlag = true;
+        console.log(JSON.stringify())
+        $.each(head, function(h){//每一大列
+            work = head[h];
+            console.log(h);//姓名
+            console.log(work);//工种列表
+
+            tableCol = tableData[dossierIndex];
+            if(tableCol == undefined) tableCol = [];
+            var loadIndex = -1;
+            $.each(loadList, function(l){
+                if(loadList[l].name == h) loadIndex = l;
+            });
+            console.log("****************************************************")
+            console.log(loadIndex)
+            console.log("****************************************************")
+            if(loadIndex == -1){
+                $.each(work, function(){
+                    tableCol.push("");
+                })
+                return true;
+            }
+            loadwork = loadList[loadIndex].numMap;
+            $.each(work, function(w){//工种//每一列
+                console.log("w");
+                console.log(work[w]);
+                console.log(loadwork[work[w]]);
+                
+                if(loadwork[work[w]] != undefined) {
+                    tableCol.push(loadwork[work[w]]);
+                    
+                }else{
+                    tableCol.push("");
+                }
+            });
+
+            // staffUsers = e.staffUser.split(",");
+            // $.each(staffUsers, function(es){
+            //     staffUsers[es]
+            //     if(loadwork[staffUsers[es]] == undefined) tableCol.push(0);
+            //     else tableCol.push(loadwork[staffUsers[es]]);
+            // })
+            tableData[dossierIndex] = tableCol;
+            
+        })
+        console.log(d)
+        console.log("========第" + b + "行加载完毕")
+
+    //     $.each(head, function(h){
+    //         //console.log("head")
+    //         //console.log(head[h])
+    //         work = head[h];
+    //         $.each(work, function(w){
+    //             var flag = true;
+    //             $.each(loadList, function(l){
+    //                 if(loadList[l].name == h){
+    //                     var temp = loadList[l].numMap[work[w]];
+    //                     if(temp == undefined){
+    //                         mybody += "<td>0</td>";
+    //                         flag = false;
+    //                         return false;
+    //                     }else{
+    //                         mybody += "<td>" + temp + "</td>";
+    //                         flag = false;
+    //                         return false;
+    //                     }
+    //                 }
+    //                 // console.log("=====================↓")
+    //                 // console.log(loadList[l].numMap)
+    //                 // console.log(l + "::" + h + "::" + w);
+    //                 // console.log(work[w])
+    //                 // console.log("=====================↑")
+                    
+    //             })
+    //             if(flag) mybody += "<td>0</td>"; else return true;
+    //         })
+    //     });
+    // })
+
+    // $.each(head, function(h){
+    //     work = head[h];
+    //     $.each(work, function(w){
+            
+    //     })
+    });
+
+    console.log(JSON.stringify(tableData));
+
+
+    console.log("表内容数组加载完毕")
+    //表头
+    
+    headName = '<th colspan="2">绩效</th>';
+    headWork = '<th></th><th>日期</th>';
+    $.each(head, function(h){
+        work = head[h];
+        headName += '<th colspan="' + work.length + '">' + h + '</th>';
+        $.each(work, function(w){
+            headWork += "<th>" + work[w] + "</th>";
+        })
+    })
+    headName += '<th class="sum" colspan="' + texts.length + '">日总计</th>';
+    $.each(texts, function(sm, smi){
+        headWork += "<th class='sum'>" + texts[sm] + "</th>";
+    })
+
+    var tableSum = Array.apply(null, Array(tableData.length)).map(() => 0);
+    tableData.forEach((e, i) => {
+        loadSumMap = body[i].sumMap;
+        mybody += '<tr style="background-color: rgba(184,255,231,0.08)"> <td style="max-width:38px;white-space: pre;"><input type="checkbox"></td>';
+        mybody += '<td  style="max-width:120px;white-space: pre;">' + body[i].createDate + '</td>'
+        e.forEach((c, j) => {
+            mybody += '<td>' + c + "</td>";
+            //console.log(c);
+            //console.log(parseInt(c));
+            if(tableSum[j] == null || tableSum[j] == undefined) tableSum[j] = 0;
+            if (!(parseInt(c).toString() == "NaN")) {//判断是否为数字
+                //console.log("=======================" + c + "==" + j)
+                tableSum[j] = parseInt(tableSum[j]) + parseInt(c);
+            }
+        })
+        console.log(JSON.stringify(tableSum));
+        $.each(texts, function(sm){
+            //console.log('strat');
+            mybody += "<th class='sum'>" + loadSumMap[texts[sm]] + "</th>";
+            if(dossierSumData[sm] == null || dossierSumData[sm] == undefined) dossierSumData[sm] = 0;
+            if (!(parseInt(loadSumMap[texts[sm]]).toString() == "NaN")) {
+                dossierSumData[sm] = parseInt(dossierSumData[sm]) + parseInt(loadSumMap[texts[sm]]);
+                //console.log("=======================" + loadSumMap[texts[sm]] + "==" + dossierSumData[sm])
+            }
+            //console.log('stop')
+        })
+    })
+    mybody += '<tr class="sum" style="background-color: rgba(184,255,231,0.08)"><td></td>';
+    mybody += '<td><strong>月总计</strong></td>'
+    tableSum.forEach((e, i) => {
+        mybody += '<td>' + e + "</td>";
+    })
+    dossierSumData.forEach((e, i) => {
+        mybody += '<th>' + e + "</td>";
+    })
+    mybody += "</tr>"
+    //console.log(tableData)
+    //console.log(texts)
+    staffName = '<th class="tableHead" colspan="' + (tableData[0].length + texts.length + 2) + '">' + o.staffName + '</th>';
+
+    // obj.forEach((e, i) => {
+    //     head = e.columnList;
+    //     //console.log(head);
+    //     //console.log(head.keys(2))
+    //     body = e.dossierList;
+    //     console.log(body);
+    //     $.each(head, function(h){
+    //         work = head[h];
+    //         headName += '<th colspan="' + work.length + '">' + h + '</th>';
+    //         $.each(work, function(w){
+    //             headWork += "<th>" + work[w] + "</th>";
+    //         })
+    //     })
+        
+    //     $.each(body, function(b){//每一列
+    //         var d = body[b];
+    //         var loadList = body[b].workloadList;
+    //         console.log(loadList);
+    //         mybody += '<tr style="background-color: rgba(184,255,231,0.08)"> <td><input type="checkbox"></td>';
+    //         mybody += '<td>' + body[b].createDate + '</td>'
+    //         $.each(head, function(h){
+    //             //console.log("head")
+    //             //console.log(head[h])
+    //             work = head[h];
+    //             $.each(work, function(w){
+    //                 var flag = true;
+    //                 $.each(loadList, function(l){
+    //                     if(loadList[l].name == h){
+    //                         var temp = loadList[l].numMap[work[w]];
+    //                         if(temp == undefined){
+    //                             mybody += "<td>0</td>";
+    //                             flag = false;
+    //                             return false;
+    //                         }else{
+    //                             mybody += "<td>" + temp + "</td>";
+    //                             flag = false;
+    //                             return false;
+    //                         }
+    //                     }
+    //                     // console.log("=====================↓")
+    //                     // console.log(loadList[l].numMap)
+    //                     // console.log(l + "::" + h + "::" + w);
+    //                     // console.log(work[w])
+    //                     // console.log("=====================↑")
+                        
+    //                 })
+    //                 if(flag) mybody += "<td>0</td>"; else return true;
+    //             })
+    //         })
+    //     })
+    //     // head.forEach((h, t) => {//用户名称
+    //     //     headName += "<td>" + h + "</td>";
+    //     //     work = head[h];
+    //     //     work.forEach(w, y => {//工作的名称
+    //     //         headWord += "<th>" + w + "</th>";
+    //     //         mybody += "<td>{{o.num}}</td>"
+    //     //     })
+    //     // })
+
+    //     // body.forEach(b, d => {//dossierList
+    //     //     mybody += '<tr style="background-color: rgba(184,255,231,0.08)"> <td><input type="checkbox"></td>';
+    //     //     head.forEach(h, t => {//用户名称
+    //     //         work = head[h];
+    //     //         work.forEach(w, y => {//工作的名称
+    //     //             if(b.name == h && b.numMap[w]){
+    //     //                 mybody += "<td>" + b.numMap[w] + "</td>"
+    //     //             }
+    //     //         })
+    //     //     })
+    //     //     mybody += '</tr>';
+    //     // })
+        
+
+    // });
+    console.log(headName)
+    $("#detail-table").append('<thead>'
+        + '<tr style="background-color: rgba(184,255,231,0.08);">'
+        + staffName
+        + '   </tr>'
+        + '<tr style="background-color: rgba(184,255,231,0.08);">'
+        + headName
+        + '   </tr>'
+        + '   <tr style="background-color: rgba(184,255,231,0.08); border: #ddd 1px solid">'
+        + headWork
+        + '   </tr>'
+        + '</thead>'
+        + '<tbody>'
+        + mybody
+        + columnBody
+        + '</tbody>'
+    
+    
+    
+    +"");
+
+
+
+    $("#inputTable").click(function(){
+        $("#detail-table").table2excel({
+            exclude: ".noExl",
+            name: obj.staffName,
+            filename: obj.staffName + " " + new Date().getMonth() + "/" + new Date().getDate(),
+            exclude_img: true,
+            exclude_links: true,
+            exclude_inputs: true,
+        })
+    })
+})
+
+</script>

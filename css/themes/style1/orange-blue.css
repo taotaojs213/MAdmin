@@ -5622,7 +5622,7 @@ End Header Option Page
     padding-bottom: 0;
 }
 .table tbody tr td {
-    border-top: 1px solid #efefef;
+    border-top: 1px solid #e3e3e3;
 }
 .ticker-wrapper.has-js {
     margin: 0;
@@ -8949,4 +8949,41 @@ ul.chats li.out .message {
     -moz-border-radius: 0px !important;
     border-radius: 0px !important;
     border: 1px solid #e5e5e5;
+}
+
+.staffTable {
+    min-width:100%;
+    max-width: none; 
+    width: auto;
+}
+.staffTable .sum{
+    background-color: #fee;
+}
+.staffTable .sum td{
+    background-color: #fee;
+    font-weight: 800;
+}
+
+.staffTable td{
+    white-space: nowrap;
+}
+.staffTable th{
+    white-space: nowrap;
+    text-align: center;
+}
+
+.staffTable .tableHead{
+    font-size: 40px;
+    border-bottom: #e3e3e3 1px solid;
+}
+
+.scroll-div {
+    margin: 15px;
+}
+
+.table-scroll {
+    box-shadow: 0px 0px 8px #ddd;
+    overflow:scroll;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

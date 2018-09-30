@@ -33,15 +33,18 @@ function getStaffTable(){
         //processing: true,
         stateSave: false,//保存状态
         ajax: {
-            url: 'https://www.ntjingui.cn/staff/findByObjList',
+            url: 'http://localhost:8090/staff/findByObjList',
+            //url: "https://www.ntjingui.cn/orderLesheng/staff/findByObjList?staffState=0",
             type: 'GET',
             data: {
             },
+            //dataType: 'jsonp',
             dataSrc: function(result){
                 //alert(result.object.length);
                 
                 return result.object;
             },
+            
         },
         columns:[{
             data: 'id',
@@ -102,3 +105,102 @@ function getStaffTable(){
     });
     return oTable;
 }
+
+
+// var detailTable = {
+//     initAll: function(){
+//         this.initVue();
+//         this.adjustTable();
+//     },
+//     initVue: function () {
+//         window.vm = new Vue({
+//             el: '#div-return-app',
+//             data: {
+//                 test: [
+//                     {
+//                         name: '软件实施费',
+//                         applyPeople: '张三[1234]',
+//                         applyDate: '2017-09-09',
+//                         receiptDate: '2017-09-12',
+//                         receipt: [{
+//                             num: '0121020',
+//                             money: '12121212',
+//                             money2: '2112121',
+//                             money2Date: '2017-08-12',
+//                             receiptStatus: '正常',
+//                             backStatus: '不可退回',
+//                             customerName: '下面的都是假的'
+//                         }]
+//                     }, {
+//                         name: '软件实ss施费ss',
+//                         applyPeople: '张三ww[1234]',
+//                         applyDate: '2017-09-09',
+//                         receiptDate: '2017-09-12',
+//                         receipt: [{
+//                             num: '0121020',
+//                             money: '12121212',
+//                             money2: '2112121',
+//                             money2Date: '2017-08-12',
+//                             receiptStatus: '正常',
+//                             backStatus: '可退回',
+//                             customerName: '你猜我是什么公司'
+//                         }, {
+//                             num: '0121020',
+//                             money: '12121212',
+//                             money2: '2112121',
+//                             money2Date: '2017-08-12',
+//                             receiptStatus: '正常',
+//                             backStatus: '不可退回',
+//                             customerName: '你猜不到我是什么公司'
+//                         }
+//                         ]
+//                     },
+//                     {
+//                         name: '软件实施费2',
+//                         applyPeople: '张三2[1234]',
+//                         applyDate: '2017-09-092',
+//                         receiptDate: '2017-09-122',
+//                         receipt: [{
+//                             num: '11111111',
+//                             money: '11111111',
+//                             money2: '1111111',
+//                             money2Date: '2017-08-12',
+//                             receiptStatus: '22正常',
+//                             backStatus: '不可退回',
+//                             customerName: '测试公司A'
+//                         }, {
+//                             num: '2222222',
+//                             money: '222222',
+//                             money2: '2222222',
+//                             money2Date: '2017-08-12',
+//                             receiptStatus: '22正常',
+//                             backStatus: '可退回',
+//                             customerName: '我是一个正经的测试公司'
+//                         }, {
+//                             num: '333333',
+//                             money: '33333',
+//                             money2: '333333',
+//                             money2Date: '2017-08-12',
+//                             receiptStatus: '22正常',
+//                             backStatus: '不可退回',
+//                             customerName: '上面的不是正经的公司'
+//                         }]
+//                     }
+//                 ]
+//             }
+//         })
+//     },
+//     adjustTable: function () {
+//         for (var i = 0; i < vm.test.length; i++) {
+//             var $tr = $('tr[index=' + i + ']');
+//             var rowspanLen = $tr.length;
+//             var $height = $tr.find('td:eq(2)').css('height');
+//             $tr.eq(0).find('td:gt(7)').attr('rowspan', rowspanLen).css('line-height', Number($height.split('px')[0] * rowspanLen) + 'px');
+//             $tr.not(":eq(0)").find('td:gt(7)').css('display', 'none');
+//             $('tr:gt(1)').find('td:lt(8)').css('line-height', '35px')
+//         }
+//     }
+// };
+$(function(){
+    //detailTable.initAll();
+})
