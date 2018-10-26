@@ -175,7 +175,7 @@ function getLastWeekDossier(staffId, staffNo){
     //console.log(staffId);
     var flag = null;
     $.ajax({
-        url: webUrl + 'workDossier/findLastWeekDossier',
+        url: webUrl + 'dossier/findLastWeekDossier',
         type: "GET",
         cache: false,
         async: false,

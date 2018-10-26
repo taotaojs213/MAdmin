@@ -51,45 +51,48 @@
     <script src="vendors/bootbox.min.js"></script>
     <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
     <script>
+        //var urlStr = "https://www.ntjingui.cn";
+        var urlStr = "http://localhost:8090"
         $(function(){
 			var cookie = $.cookie('uAdminCookie');
-    
-			$.ajax({
-				url:'https://www.ntjingui.cn/user/cookie',
-				type: "GET",
-				cache: false,
-				async: true,
-				data: {
-					cookie: cookie
-				},
-				success: function(obj){
-					if(obj.success == 1){
-						location.href="/indexData.html"
-					}
-				},
-				error: function(d,msg){
-					bootbox.alert({
-						title: '错误',
-						message: msg,
-						backdrop: true,
-					});
-				}
-			})
+            if(cookie != undefined){
+                $.ajax({
+                    url: urlStr + '/cookie',
+                    type: "GET",
+                    cache: false,
+                    async: true,
+                    data: {
+                        cookie: cookie
+                    },
+                    success: function(obj){
+                        if(obj.success == 1){
+                            location.href="/indexData.html"
+                        }
+                    },
+                    error: function(d,msg){
+                        bootbox.alert({
+                            title: '错误',
+                            message: msg,
+                            backdrop: true,
+                        });
+                    }
+                })
+            }
 		})
         function login(){
             var pwd = $("#userPwd").val()
             $.ajax({
-                url:'https://www.ntjingui.cn/user/login',
+                url: urlStr + '/cookie/login',
                 type: "GET",
                 cache: false,
                 async: true,
                 data: {
-                    password: pwd
+                    pwd: pwd
                 },
                 success: function(obj){
                     if(obj.success == 1){
-                        console.log(obj.object.cookie)
-                        $.cookie('uAdminCookie', obj.object.cookie, { expires: 5 });
+                        console.log(obj.object)
+                        $.cookie('uAdminCookie', obj.object, { expires: 5 });
                         location.href="/indexData.html"
                     }else{
                         bootbox.alert({
