@@ -13,7 +13,7 @@ $(function(){
             },
             success: function(obj){
                 if(obj.success == 1){
-                    showIndex();
+                    //showIndex();
                 }else{
                     alert(obj.msg)
                     location.href="/login.html"
