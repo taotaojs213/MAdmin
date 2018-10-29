@@ -276,7 +276,40 @@ function getStaff(id){
         async: false,
         timeout : 10000,
         data: {
+            id: id
+        },
+        success: function(obj){
+            console.log(obj)
+            if(obj.success == 1){
+                flag = obj.object;
+            }else{
+                bootbox.alert({
+                    title: '错误提示',
+                    message: obj.msg,
+                });
+            }
+        },
+        error: function(d,msg){
+            bootbox.alert({
+                title: '错误提示',
+                message: '获取服务器信息出错，请刷新重试或联系管理员',
+            });
+        }
+    })
+    return flag[0];
+}
+
+function getStaffByDate(id, dateStr){
+    var flag;
+    $.ajax({
+        url: webUrl + 'staff/getStaffByDate',
+        type: "GET",
+        cache: false,
+        async: false,
+        timeout : 10000,
+        data: {
             id: id,
+            dateStr: dateStr
         },
         success: function(obj){
             console.log(obj)

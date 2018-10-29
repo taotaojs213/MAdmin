@@ -8,7 +8,7 @@ $(function () {
         console.log(aData.id);
         var ajax = getStaff(aData.id);
         console.log(ajax)
-        gotoPage("staffWorkTable","<script>var ajax = " + JSON.stringify(ajax) + "</script>");
+        gotoPage("staffWorkTable","<script>var ajaxStr = " + JSON.stringify(ajax) + "</script>");
     });
 
     var nEditing = null;

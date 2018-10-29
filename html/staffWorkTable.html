@@ -1,14 +1,27 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="/vendors/bootstrap-table/bootstrap-table.min.css">
+<link rel="stylesheet" href="/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
 <script src="/vendors/bootstrap-table/bootstrap-table.min.js"></script>
 <script src="/vendors/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="/vendors/jquery.table2excel.min.js"></script>
 <script src="/js/allTable.js"></script>
 <div id="page-wrapper">
     <div class="page-content">
         <div class="row">
             <div class="scroll-div">
-                <input id="inputTable"  class="btn btn-red"  type="button" value="导出EXCEL" onclick="javascript:excels('detail-table')" />
+                <div style="display: flex">
+                    <input id="inputTable"  class="btn btn-red"  type="button" value="导出EXCEL" onclick="javascript:excels('detail-table')" />
+                    <div style="width:30px"></div>
+                    <div class="input-group" style="max-width: 270px">
+                            <input id="datetimeStart" type="text" class="form-control" value="请选择日期" >
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" onclick="javascript:workloadByDate()">确定！</button>
+                        </span>
+                    </div>
+                </div>
+
                 <div class="table-scroll">
                     <table id="detail-table" class="table table-bordered staffTable">
                         
@@ -19,6 +32,38 @@
     </div>
 </div>
 <script>
+//alert(dateStr);
+function workloadByDate(){
+    var workloadDate = $("#datetimeStart").val();
+    workloadDate = workloadDate.substring(7);
+    alert(workloadDate + "::" + ajaxStr.id);
+    var ajaxString = getStaffByDate(ajaxStr.id, workloadDate);
+    console.log(ajaxString.dossierList);
+    if(ajaxString.dossierList && ajaxString.dossierList.length > 0){
+        $("#detail-table").empty();
+        loadPage(ajaxString);
+    }else{
+        bootbox.alert({
+            title: '提示',
+            message: '该日期没有数据！',
+        });
+        
+    }
+};
+$('#datetimeStart').datetimepicker({
+	format: '当前选择日期：yyyy年mm月',  //显示格式可为yyyymm/yyyy-mm-dd/yyyy.mm.dd
+	weekStart: 1,  	//0-周日,6-周六 。默认为0
+	autoclose: false,  
+	startView: 3,  	//打开时显示的视图。0-'hour' 1-'day' 2-'month' 3-'year' 4-'decade' 
+	minView: 3,  	//最小时间视图。默认0-'hour'
+// 	maxView: 4, 	//最大时间视图。默认4-'decade'
+ 	todayBtn:true, 	//true时"今天"按钮仅仅将视图转到当天的日期。如果是'linked'，当天日期将会被选中。 
+// 	todayHighlight:true,	//默认值: false,如果为true, 高亮当前日期。
+	initialDate: new Date(),	//初始化日期.默认new Date()当前日期
+	forceParse: false,  	//当输入非格式化日期时，强制格式化。默认true
+	bootcssVer:3,	//显示向左向右的箭头
+    language: 'zh-CN', //语言
+});
 
 $(function(){
     // console.log(ajax)
@@ -28,6 +73,9 @@ $(function(){
     // ajax = ajax.object[0];
     // //ajax = JSON.parse(ajax);
     // }
+    loadPage(ajaxStr);
+});
+function loadPage(ajax){
     console.log("+++++++++++++++++++++++++++++++++++++++++++++++")
     console.log(ajax);
     var obj = ajax,staffName,headName = "",headWork = "", mybody = "", head = [], work =[], body = [], name, columnBody;
@@ -348,6 +396,6 @@ $(function(){
             exclude_inputs: true,
         })
     })
-})
+}
 
 </script>

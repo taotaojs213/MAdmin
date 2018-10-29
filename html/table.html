@@ -112,58 +112,15 @@ $(function(){
                 else tableCol.push(loadwork[work[w]]);
             });
 
-            // staffUsers = e.staffUser.split(",");
-            // $.each(staffUsers, function(es){
-            //     staffUsers[es]
-            //     if(loadwork[staffUsers[es]] == undefined) tableCol.push(0);
-            //     else tableCol.push(loadwork[staffUsers[es]]);
-            // })
             tableData[dossierIndex] = tableCol;
         })
 
 
-    //     $.each(head, function(h){
-    //         //console.log("head")
-    //         //console.log(head[h])
-    //         work = head[h];
-    //         $.each(work, function(w){
-    //             var flag = true;
-    //             $.each(loadList, function(l){
-    //                 if(loadList[l].name == h){
-    //                     var temp = loadList[l].numMap[work[w]];
-    //                     if(temp == undefined){
-    //                         mybody += "<td>0</td>";
-    //                         flag = false;
-    //                         return false;
-    //                     }else{
-    //                         mybody += "<td>" + temp + "</td>";
-    //                         flag = false;
-    //                         return false;
-    //                     }
-    //                 }
-    //                 // console.log("=====================↓")
-    //                 // console.log(loadList[l].numMap)
-    //                 // console.log(l + "::" + h + "::" + w);
-    //                 // console.log(work[w])
-    //                 // console.log("=====================↑")
-                    
-    //             })
-    //             if(flag) mybody += "<td>0</td>"; else return true;
-    //         })
-    //     });
-    // })
 
-    // $.each(head, function(h){
-    //     work = head[h];
-    //     $.each(work, function(w){
-            
-    //     })
     });
 
     console.log(JSON.stringify(tableData));
 
-
-    
     //表头
     
     headName = '<th colspan="2">绩效</th>';
@@ -216,80 +173,6 @@ $(function(){
     mybody += "</tr>"
     staffName = '<th class="tableHead" colspan="' + (tableData[0].length + texts.length + 2) + '">' + o.staffName + '</th>';
 
-    // obj.forEach((e, i) => {
-    //     head = e.columnList;
-    //     //console.log(head);
-    //     //console.log(head.keys(2))
-    //     body = e.dossierList;
-    //     console.log(body);
-    //     $.each(head, function(h){
-    //         work = head[h];
-    //         headName += '<th colspan="' + work.length + '">' + h + '</th>';
-    //         $.each(work, function(w){
-    //             headWork += "<th>" + work[w] + "</th>";
-    //         })
-    //     })
-        
-    //     $.each(body, function(b){//每一列
-    //         var d = body[b];
-    //         var loadList = body[b].workloadList;
-    //         console.log(loadList);
-    //         mybody += '<tr style="background-color: rgba(184,255,231,0.08)"> <td><input type="checkbox"></td>';
-    //         mybody += '<td>' + body[b].createDate + '</td>'
-    //         $.each(head, function(h){
-    //             //console.log("head")
-    //             //console.log(head[h])
-    //             work = head[h];
-    //             $.each(work, function(w){
-    //                 var flag = true;
-    //                 $.each(loadList, function(l){
-    //                     if(loadList[l].name == h){
-    //                         var temp = loadList[l].numMap[work[w]];
-    //                         if(temp == undefined){
-    //                             mybody += "<td>0</td>";
-    //                             flag = false;
-    //                             return false;
-    //                         }else{
-    //                             mybody += "<td>" + temp + "</td>";
-    //                             flag = false;
-    //                             return false;
-    //                         }
-    //                     }
-    //                     // console.log("=====================↓")
-    //                     // console.log(loadList[l].numMap)
-    //                     // console.log(l + "::" + h + "::" + w);
-    //                     // console.log(work[w])
-    //                     // console.log("=====================↑")
-                        
-    //                 })
-    //                 if(flag) mybody += "<td>0</td>"; else return true;
-    //             })
-    //         })
-    //     })
-    //     // head.forEach((h, t) => {//用户名称
-    //     //     headName += "<td>" + h + "</td>";
-    //     //     work = head[h];
-    //     //     work.forEach(w, y => {//工作的名称
-    //     //         headWord += "<th>" + w + "</th>";
-    //     //         mybody += "<td>{{o.num}}</td>"
-    //     //     })
-    //     // })
-
-    //     // body.forEach(b, d => {//dossierList
-    //     //     mybody += '<tr style="background-color: rgba(184,255,231,0.08)"> <td><input type="checkbox"></td>';
-    //     //     head.forEach(h, t => {//用户名称
-    //     //         work = head[h];
-    //     //         work.forEach(w, y => {//工作的名称
-    //     //             if(b.name == h && b.numMap[w]){
-    //     //                 mybody += "<td>" + b.numMap[w] + "</td>"
-    //     //             }
-    //     //         })
-    //     //     })
-    //     //     mybody += '</tr>';
-    //     // })
-        
-
-    // });
     console.log(headName)
     $("#detail-table").append('<thead>'
         + '<tr style="background-color: rgba(184,255,231,0.08);">'
